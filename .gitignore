@@ -1,0 +1,12 @@
+# NodeJS deps
+node_modules/
+
+# Build output
+lib/
+
+# VSCode
+.vscode/
+
+# MacOS
+.DS_Store
+

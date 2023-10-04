@@ -1,0 +1,36 @@
+{
+	"name": "@notice-org/ntc",
+	"version": "1.0.0",
+	"description": "A package containing all the core functions of any Notice integrations",
+	"homepage": "https://notice.studio",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/notice-github/ntc-package.git"
+	},
+	"bugs": {
+		"url": "https://github.com/notice-github/ntc-package/issues"
+	},
+	"author": {
+		"name": "Notice Studio",
+		"email": "jonas.roussel@notice.studio",
+		"url": "https://notice.studio"
+	},
+	"keywords": [
+		"notice"
+	],
+	"main": "lib/index.js",
+	"files": [
+		"lib"
+	],
+	"engines": {
+		"node": ">=18"
+	},
+	"scripts": {
+		"build": "rm -rf lib && tsc --build",
+		"prepublishOnly": "pnpm run build"
+	},
+	"devDependencies": {
+		"@types/node": "^20.8.2",
+		"typescript": "^5.2.2"
+	}
+}

@@ -1,0 +1,42 @@
+name: Release CI
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PNPM 8.5
+        uses: pnpm/action-setup@v2.4.0
+        with:
+          version: 8.5
+
+      - name: Setup NodeJS 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Define release version
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/tags/v*}" >> $GITHUB_ENV
+
+      - name: NPM version
+        run: npm version --git-tag-version=false $RELEASE_VERSION
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Publish commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: '[v${{ env.RELEASE_VERSION }}] Published to NPM'
+          branch: main
+
+      - name: Publish to NPM
+        run: pnpm publish --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
