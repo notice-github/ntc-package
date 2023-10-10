@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.AUTO_COMMIT_TOKEN }}
 
       - name: Setup PNPM 8.5
         uses: pnpm/action-setup@v2.4.0
