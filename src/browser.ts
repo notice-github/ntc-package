@@ -10,13 +10,23 @@ export namespace NTCBrowser {
 	export async function queryDocument(
 		target: string,
 		params: Record<string, any>,
-		opts?: Omit<NTCQueryOptions, 'format'>
+		opts?: NTCQueryOptions
 	): Promise<NTCQueryResult> {
 		const search = new URLSearchParams(document.location.search)
 
 		dynamicParam('lang', params, search)
+		dynamicParam('page', params, search)
 		dynamicParam('theme', params, search)
 		dynamicParam('layout', params, search)
+
+		// Wordpress exception
+		if (params['integration'] === 'wordpress-plugin') {
+			dynamicParam('article', params, search)
+			if (params['article'] != undefined) {
+				params['page'] = params['article']
+				delete params['article']
+			}
+		}
 
 		const query = await NTCBase.queryDocument(target, params, opts)
 		if (!query.ok) return query

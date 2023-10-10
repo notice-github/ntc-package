@@ -9,7 +9,6 @@ export interface NTCParams {
 
 export interface NTCQueryOptions {
 	signal?: AbortSignal
-	format?: 'html' | 'markdown' | 'fragmented'
 }
 
 export type NTCQueryResult = { ok: true; data: any } | { ok: false; error: string }
