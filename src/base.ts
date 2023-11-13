@@ -38,7 +38,7 @@ export namespace NTCBase {
 		params['format'] ??= 'fragmented'
 
 		// URL composition
-		const url = new URL(`https://bdn.notice.studio/document/${target}`)
+		const url = new URL(`${opts?.serverURL ?? 'https://bdn.notice.studio'}/document/${target}`)
 		for (let [key, value] of Object.entries(params)) {
 			if (url.searchParams.has(key)) continue
 			url.searchParams.set(key, value)
@@ -53,7 +53,7 @@ export namespace NTCBase {
 		params['format'] ??= 'fragmented'
 
 		// URL composition
-		const url = new URL(`https://bdn.notice.studio/body/${target}`)
+		const url = new URL(`${opts?.serverURL ?? 'https://bdn.notice.studio'}/body/${target}`)
 		for (let [key, value] of Object.entries(params)) {
 			if (url.searchParams.has(key)) continue
 			url.searchParams.set(key, value)
