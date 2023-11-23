@@ -18,6 +18,8 @@
 	"keywords": [
 		"notice"
 	],
+	"main": "./lib/cjs/index.js",
+	"types": "./lib/types/index.ts",
 	"exports": {
 		".": {
 			"types": "./lib/types/index.ts",
