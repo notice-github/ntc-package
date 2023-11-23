@@ -20,7 +20,7 @@
 	],
 	"exports": {
 		".": {
-			"types": "./lib/esm/index.d.ts",
+			"types": "./lib/types/index.d.ts",
 			"import": "./lib/esm/index.js",
 			"require": "./lib/cjs/index.js",
 			"default": "./lib/cjs/index.js"
@@ -33,7 +33,7 @@
 		"node": ">=18"
 	},
 	"scripts": {
-		"build": "rm -rf lib && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json",
+		"build": "rm -rf lib && tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json && mkdir -p ./lib/types && cp -r ./src/* ./lib/types",
 		"prepublishOnly": "pnpm run build"
 	},
 	"devDependencies": {
