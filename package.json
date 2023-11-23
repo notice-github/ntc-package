@@ -1,6 +1,6 @@
 {
 	"name": "@notice-org/ntc",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "A package containing all the core functions of any Notice integrations",
 	"homepage": "https://notice.studio",
 	"repository": {
