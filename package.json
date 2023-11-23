@@ -20,7 +20,7 @@
 	],
 	"exports": {
 		".": {
-			"types": "./lib/types/index.d.ts",
+			"types": "./lib/types/index.ts",
 			"import": "./lib/esm/index.js",
 			"require": "./lib/cjs/index.js",
 			"default": "./lib/cjs/index.js"
