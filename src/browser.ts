@@ -81,6 +81,7 @@ export namespace NTCBrowser {
 		const script = document.createElement('script')
 		script.id = `NTC_script-${data.id}`
 		script.type = 'text/javascript'
+		script.nonce = 'noticenonce' // this is a static nonce for CSP, used by some users that don t want unsafe-inline
 		script.innerHTML = data.script
 		document.head.appendChild(script)
 
